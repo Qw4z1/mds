@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ass2/src" modelPluginID="ass2" modelName="Assignment2"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>assigment2.ecore</foreignModel>
+  <genPackages prefix="System" disposableProviderFactory="true" ecorePackage="assigment2.ecore#/">
+    <genClasses ecoreClass="assigment2.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Person/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Person/role"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Person/isResponsible"/>
+    </genClasses>
+    <genClasses ecoreClass="assigment2.ecore#//BooleanCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//BooleanCondition/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//BooleanCondition/Description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//BooleanCondition/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//BooleanCondition/forOutput"/>
+    </genClasses>
+    <genClasses ecoreClass="assigment2.ecore#//WorkPiece">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//WorkPiece/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//WorkPiece/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//WorkPiece/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//WorkPiece/isStored"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//WorkPiece/Kind"/>
+    </genClasses>
+    <genClasses ecoreClass="assigment2.ecore#//Step">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Step/Speed"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Step/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Step/output"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Step/overseenBy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Step/inputCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Step/appliesOutputCondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Step/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Step/Step"/>
+    </genClasses>
+    <genClasses ecoreClass="assigment2.ecore#//Manufacturing"/>
+    <genClasses ecoreClass="assigment2.ecore#//QualityAssurance"/>
+    <genClasses ecoreClass="assigment2.ecore#//Transport"/>
+    <genClasses ecoreClass="assigment2.ecore#//IMS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assigment2.ecore#//IMS/conditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assigment2.ecore#//IMS/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assigment2.ecore#//IMS/workPieces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assigment2.ecore#//IMS/persons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//IMS/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assigment2.ecore#//IMS/storages"/>
+    </genClasses>
+    <genClasses ecoreClass="assigment2.ecore#//Storage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Storage/capacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Storage/isStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Storage/isEnd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assigment2.ecore#//Storage/has"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assigment2.ecore#//Storage/id"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
