@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link system.WorkPiece#getTo <em>To</em>}</li>
  *   <li>{@link system.WorkPiece#getId <em>Id</em>}</li>
  *   <li>{@link system.WorkPiece#getIsStored <em>Is Stored</em>}</li>
- *   <li>{@link system.WorkPiece#getKind <em>Kind</em>}</li>
+ *   <li>{@link system.WorkPiece#getType <em>Type</em>}</li>
  *   <li>{@link system.WorkPiece#getInlcudedIn <em>Inlcuded In</em>}</li>
  * </ul>
  * </p>
@@ -123,30 +123,30 @@ public interface WorkPiece extends EObject {
 	EList<Storage> getIsStored();
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see #setKind(String)
-	 * @see system.SystemPackage#getWorkPiece_Kind()
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see #setType(String)
+	 * @see system.SystemPackage#getWorkPiece_Type()
 	 * @model
 	 * @generated
 	 */
-	String getKind();
+	String getType();
 
 	/**
-	 * Sets the value of the '{@link system.WorkPiece#getKind <em>Kind</em>}' attribute.
+	 * Sets the value of the '{@link system.WorkPiece#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see #getKind()
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see #getType()
 	 * @generated
 	 */
-	void setKind(String value);
+	void setType(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Inlcuded In</b></em>' reference list.

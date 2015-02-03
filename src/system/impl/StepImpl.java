@@ -447,7 +447,7 @@ public class StepImpl extends MinimalEObjectImpl.Container implements Step {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Speed: ");
+		result.append(" (speed: ");
 		result.append(speed);
 		result.append(", id: ");
 		result.append(id);

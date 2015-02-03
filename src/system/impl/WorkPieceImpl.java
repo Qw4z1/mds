@@ -36,7 +36,7 @@ import system.WorkPiece;
  *   <li>{@link system.impl.WorkPieceImpl#getTo <em>To</em>}</li>
  *   <li>{@link system.impl.WorkPieceImpl#getId <em>Id</em>}</li>
  *   <li>{@link system.impl.WorkPieceImpl#getIsStored <em>Is Stored</em>}</li>
- *   <li>{@link system.impl.WorkPieceImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link system.impl.WorkPieceImpl#getType <em>Type</em>}</li>
  *   <li>{@link system.impl.WorkPieceImpl#getInlcudedIn <em>Inlcuded In</em>}</li>
  * </ul>
  * </p>
@@ -95,24 +95,24 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 	protected EList<Storage> isStored;
 
 	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String KIND_EDEFAULT = null;
+	protected static final String TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected String kind = KIND_EDEFAULT;
+	protected String type = TYPE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getInlcudedIn() <em>Inlcuded In</em>}' reference list.
@@ -257,8 +257,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getKind() {
-		return kind;
+	public String getType() {
+		return type;
 	}
 
 	/**
@@ -266,11 +266,11 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKind(String newKind) {
-		String oldKind = kind;
-		kind = newKind;
+	public void setType(String newType) {
+		String oldType = type;
+		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SystemPackage.WORK_PIECE__KIND, oldKind, kind));
+			eNotify(new ENotificationImpl(this, Notification.SET, SystemPackage.WORK_PIECE__TYPE, oldType, type));
 	}
 
 	/**
@@ -332,8 +332,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 				return getId();
 			case SystemPackage.WORK_PIECE__IS_STORED:
 				return getIsStored();
-			case SystemPackage.WORK_PIECE__KIND:
-				return getKind();
+			case SystemPackage.WORK_PIECE__TYPE:
+				return getType();
 			case SystemPackage.WORK_PIECE__INLCUDED_IN:
 				return getInlcudedIn();
 		}
@@ -362,8 +362,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 				getIsStored().clear();
 				getIsStored().addAll((Collection<? extends Storage>)newValue);
 				return;
-			case SystemPackage.WORK_PIECE__KIND:
-				setKind((String)newValue);
+			case SystemPackage.WORK_PIECE__TYPE:
+				setType((String)newValue);
 				return;
 			case SystemPackage.WORK_PIECE__INLCUDED_IN:
 				getInlcudedIn().clear();
@@ -393,8 +393,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 			case SystemPackage.WORK_PIECE__IS_STORED:
 				getIsStored().clear();
 				return;
-			case SystemPackage.WORK_PIECE__KIND:
-				setKind(KIND_EDEFAULT);
+			case SystemPackage.WORK_PIECE__TYPE:
+				setType(TYPE_EDEFAULT);
 				return;
 			case SystemPackage.WORK_PIECE__INLCUDED_IN:
 				getInlcudedIn().clear();
@@ -419,8 +419,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case SystemPackage.WORK_PIECE__IS_STORED:
 				return isStored != null && !isStored.isEmpty();
-			case SystemPackage.WORK_PIECE__KIND:
-				return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT.equals(kind);
+			case SystemPackage.WORK_PIECE__TYPE:
+				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case SystemPackage.WORK_PIECE__INLCUDED_IN:
 				return inlcudedIn != null && !inlcudedIn.isEmpty();
 		}
@@ -439,8 +439,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
-		result.append(", Kind: ");
-		result.append(kind);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

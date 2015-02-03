@@ -350,9 +350,9 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Name: ");
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", Description: ");
+		result.append(", description: ");
 		result.append(description);
 		result.append(')');
 		return result.toString();

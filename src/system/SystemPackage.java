@@ -231,13 +231,13 @@ public interface SystemPackage extends EPackage {
 	int WORK_PIECE__IS_STORED = 3;
 
 	/**
-	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PIECE__KIND = 4;
+	int WORK_PIECE__TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Inlcuded In</b></em>' reference list.
@@ -985,15 +985,15 @@ public interface SystemPackage extends EPackage {
 	EReference getWorkPiece_IsStored();
 
 	/**
-	 * Returns the meta object for the attribute '{@link system.WorkPiece#getKind <em>Kind</em>}'.
+	 * Returns the meta object for the attribute '{@link system.WorkPiece#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see system.WorkPiece#getKind()
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see system.WorkPiece#getType()
 	 * @see #getWorkPiece()
 	 * @generated
 	 */
-	EAttribute getWorkPiece_Kind();
+	EAttribute getWorkPiece_Type();
 
 	/**
 	 * Returns the meta object for the reference list '{@link system.WorkPiece#getInlcudedIn <em>Inlcuded In</em>}'.
@@ -1425,12 +1425,12 @@ public interface SystemPackage extends EPackage {
 		EReference WORK_PIECE__IS_STORED = eINSTANCE.getWorkPiece_IsStored();
 
 		/**
-		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORK_PIECE__KIND = eINSTANCE.getWorkPiece_Kind();
+		EAttribute WORK_PIECE__TYPE = eINSTANCE.getWorkPiece_Type();
 
 		/**
 		 * The meta object literal for the '<em><b>Inlcuded In</b></em>' reference list feature.
