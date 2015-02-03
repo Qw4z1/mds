@@ -158,13 +158,22 @@ public interface SystemPackage extends EPackage {
 	int BOOLEAN_CONDITION__FOR_OUTPUT = 3;
 
 	/**
+	 * The feature id for the '<em><b>Contains</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_CONDITION__CONTAINS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Boolean Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_CONDITION_FEATURE_COUNT = 4;
+	int BOOLEAN_CONDITION_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Boolean Condition</em>' class.
@@ -231,13 +240,22 @@ public interface SystemPackage extends EPackage {
 	int WORK_PIECE__KIND = 4;
 
 	/**
+	 * The feature id for the '<em><b>Inlcuded In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_PIECE__INLCUDED_IN = 5;
+
+	/**
 	 * The number of structural features of the '<em>Work Piece</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PIECE_FEATURE_COUNT = 5;
+	int WORK_PIECE_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Work Piece</em>' class.
@@ -902,6 +920,17 @@ public interface SystemPackage extends EPackage {
 	EReference getBooleanCondition_ForOutput();
 
 	/**
+	 * Returns the meta object for the reference list '{@link system.BooleanCondition#getContains <em>Contains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Contains</em>'.
+	 * @see system.BooleanCondition#getContains()
+	 * @see #getBooleanCondition()
+	 * @generated
+	 */
+	EReference getBooleanCondition_Contains();
+
+	/**
 	 * Returns the meta object for class '{@link system.WorkPiece <em>Work Piece</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -965,6 +994,17 @@ public interface SystemPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getWorkPiece_Kind();
+
+	/**
+	 * Returns the meta object for the reference list '{@link system.WorkPiece#getInlcudedIn <em>Inlcuded In</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Inlcuded In</em>'.
+	 * @see system.WorkPiece#getInlcudedIn()
+	 * @see #getWorkPiece()
+	 * @generated
+	 */
+	EReference getWorkPiece_InlcudedIn();
 
 	/**
 	 * Returns the meta object for class '{@link system.Step <em>Step</em>}'.
@@ -1335,6 +1375,14 @@ public interface SystemPackage extends EPackage {
 		EReference BOOLEAN_CONDITION__FOR_OUTPUT = eINSTANCE.getBooleanCondition_ForOutput();
 
 		/**
+		 * The meta object literal for the '<em><b>Contains</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOLEAN_CONDITION__CONTAINS = eINSTANCE.getBooleanCondition_Contains();
+
+		/**
 		 * The meta object literal for the '{@link system.impl.WorkPieceImpl <em>Work Piece</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1383,6 +1431,14 @@ public interface SystemPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WORK_PIECE__KIND = eINSTANCE.getWorkPiece_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Inlcuded In</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORK_PIECE__INLCUDED_IN = eINSTANCE.getWorkPiece_InlcudedIn();
 
 		/**
 		 * The meta object literal for the '{@link system.impl.StepImpl <em>Step</em>}' class.

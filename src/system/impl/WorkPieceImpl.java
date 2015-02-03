@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -16,6 +17,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import system.BooleanCondition;
 import system.Step;
 import system.Storage;
 import system.SystemPackage;
@@ -33,6 +37,7 @@ import system.WorkPiece;
  *   <li>{@link system.impl.WorkPieceImpl#getId <em>Id</em>}</li>
  *   <li>{@link system.impl.WorkPieceImpl#getIsStored <em>Is Stored</em>}</li>
  *   <li>{@link system.impl.WorkPieceImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link system.impl.WorkPieceImpl#getInlcudedIn <em>Inlcuded In</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,6 +113,16 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 	 * @ordered
 	 */
 	protected String kind = KIND_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInlcudedIn() <em>Inlcuded In</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInlcudedIn()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BooleanCondition> inlcudedIn;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +278,47 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<BooleanCondition> getInlcudedIn() {
+		if (inlcudedIn == null) {
+			inlcudedIn = new EObjectWithInverseResolvingEList.ManyInverse<BooleanCondition>(BooleanCondition.class, this, SystemPackage.WORK_PIECE__INLCUDED_IN, SystemPackage.BOOLEAN_CONDITION__CONTAINS);
+		}
+		return inlcudedIn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.WORK_PIECE__INLCUDED_IN:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInlcudedIn()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.WORK_PIECE__INLCUDED_IN:
+				return ((InternalEList<?>)getInlcudedIn()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -278,6 +334,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 				return getIsStored();
 			case SystemPackage.WORK_PIECE__KIND:
 				return getKind();
+			case SystemPackage.WORK_PIECE__INLCUDED_IN:
+				return getInlcudedIn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -307,6 +365,10 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 			case SystemPackage.WORK_PIECE__KIND:
 				setKind((String)newValue);
 				return;
+			case SystemPackage.WORK_PIECE__INLCUDED_IN:
+				getInlcudedIn().clear();
+				getInlcudedIn().addAll((Collection<? extends BooleanCondition>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -334,6 +396,9 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 			case SystemPackage.WORK_PIECE__KIND:
 				setKind(KIND_EDEFAULT);
 				return;
+			case SystemPackage.WORK_PIECE__INLCUDED_IN:
+				getInlcudedIn().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -356,6 +421,8 @@ public class WorkPieceImpl extends MinimalEObjectImpl.Container implements WorkP
 				return isStored != null && !isStored.isEmpty();
 			case SystemPackage.WORK_PIECE__KIND:
 				return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT.equals(kind);
+			case SystemPackage.WORK_PIECE__INLCUDED_IN:
+				return inlcudedIn != null && !inlcudedIn.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -6,18 +6,23 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import system.BooleanCondition;
 import system.Step;
 import system.SystemPackage;
+import system.WorkPiece;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +35,7 @@ import system.SystemPackage;
  *   <li>{@link system.impl.BooleanConditionImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link system.impl.BooleanConditionImpl#getInput <em>Input</em>}</li>
  *   <li>{@link system.impl.BooleanConditionImpl#getForOutput <em>For Output</em>}</li>
+ *   <li>{@link system.impl.BooleanConditionImpl#getContains <em>Contains</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,6 +101,16 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EList<Step> forOutput;
+
+	/**
+	 * The cached value of the '{@link #getContains() <em>Contains</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContains()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<WorkPiece> contains;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,6 +202,47 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<WorkPiece> getContains() {
+		if (contains == null) {
+			contains = new EObjectWithInverseResolvingEList.ManyInverse<WorkPiece>(WorkPiece.class, this, SystemPackage.BOOLEAN_CONDITION__CONTAINS, SystemPackage.WORK_PIECE__INLCUDED_IN);
+		}
+		return contains;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.BOOLEAN_CONDITION__CONTAINS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContains()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SystemPackage.BOOLEAN_CONDITION__CONTAINS:
+				return ((InternalEList<?>)getContains()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -197,6 +254,8 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 				return getInput();
 			case SystemPackage.BOOLEAN_CONDITION__FOR_OUTPUT:
 				return getForOutput();
+			case SystemPackage.BOOLEAN_CONDITION__CONTAINS:
+				return getContains();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,6 +283,10 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 				getForOutput().clear();
 				getForOutput().addAll((Collection<? extends Step>)newValue);
 				return;
+			case SystemPackage.BOOLEAN_CONDITION__CONTAINS:
+				getContains().clear();
+				getContains().addAll((Collection<? extends WorkPiece>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -248,6 +311,9 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 			case SystemPackage.BOOLEAN_CONDITION__FOR_OUTPUT:
 				getForOutput().clear();
 				return;
+			case SystemPackage.BOOLEAN_CONDITION__CONTAINS:
+				getContains().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -268,6 +334,8 @@ public class BooleanConditionImpl extends MinimalEObjectImpl.Container implement
 				return input != null && !input.isEmpty();
 			case SystemPackage.BOOLEAN_CONDITION__FOR_OUTPUT:
 				return forOutput != null && !forOutput.isEmpty();
+			case SystemPackage.BOOLEAN_CONDITION__CONTAINS:
+				return contains != null && !contains.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

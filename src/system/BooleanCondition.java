@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link system.BooleanCondition#getDescription <em>Description</em>}</li>
  *   <li>{@link system.BooleanCondition#getInput <em>Input</em>}</li>
  *   <li>{@link system.BooleanCondition#getForOutput <em>For Output</em>}</li>
+ *   <li>{@link system.BooleanCondition#getContains <em>Contains</em>}</li>
  * </ul>
  * </p>
  *
@@ -109,5 +110,23 @@ public interface BooleanCondition extends EObject {
 	 * @generated
 	 */
 	EList<Step> getForOutput();
+
+	/**
+	 * Returns the value of the '<em><b>Contains</b></em>' reference list.
+	 * The list contents are of type {@link system.WorkPiece}.
+	 * It is bidirectional and its opposite is '{@link system.WorkPiece#getInlcudedIn <em>Inlcuded In</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contains</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contains</em>' reference list.
+	 * @see system.SystemPackage#getBooleanCondition_Contains()
+	 * @see system.WorkPiece#getInlcudedIn
+	 * @model opposite="inlcudedIn" required="true"
+	 * @generated
+	 */
+	EList<WorkPiece> getContains();
 
 } // BooleanCondition

@@ -429,7 +429,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_RV-bFqq6EeSdIPTqp5kPFg" y="60"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_RV-bEaq6EeSdIPTqp5kPFg" fontName=".Helvetica Neue DeskInterface"/>
-    <element xmi:type="ecore:EReference" href="assigment2.ecore#//WorkPiece/%"/>
+    <element xmi:type="ecore:EReference" href="assigment2.ecore#//WorkPiece/inlcudedIn"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RV-bEqq6EeSdIPTqp5kPFg" points="[-6, -3, 298, -3]$[-304, 0, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RWBeYKq6EeSdIPTqp5kPFg" id="(0.03296703296703297,0.29333333333333333)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RWBeYaq6EeSdIPTqp5kPFg" id="(1.0,0.17333333333333334)"/>

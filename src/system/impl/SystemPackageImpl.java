@@ -237,6 +237,15 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getBooleanCondition_Contains() {
+		return (EReference)booleanConditionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getWorkPiece() {
 		return workPieceEClass;
 	}
@@ -284,6 +293,15 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 	 */
 	public EAttribute getWorkPiece_Kind() {
 		return (EAttribute)workPieceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWorkPiece_InlcudedIn() {
+		return (EReference)workPieceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -549,6 +567,7 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		createEAttribute(booleanConditionEClass, BOOLEAN_CONDITION__DESCRIPTION);
 		createEReference(booleanConditionEClass, BOOLEAN_CONDITION__INPUT);
 		createEReference(booleanConditionEClass, BOOLEAN_CONDITION__FOR_OUTPUT);
+		createEReference(booleanConditionEClass, BOOLEAN_CONDITION__CONTAINS);
 
 		workPieceEClass = createEClass(WORK_PIECE);
 		createEReference(workPieceEClass, WORK_PIECE__FROM);
@@ -556,6 +575,7 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		createEAttribute(workPieceEClass, WORK_PIECE__ID);
 		createEReference(workPieceEClass, WORK_PIECE__IS_STORED);
 		createEAttribute(workPieceEClass, WORK_PIECE__KIND);
+		createEReference(workPieceEClass, WORK_PIECE__INLCUDED_IN);
 
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__SPEED);
@@ -632,6 +652,7 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		initEAttribute(getBooleanCondition_Description(), ecorePackage.getEString(), "Description", null, 1, 1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBooleanCondition_Input(), this.getStep(), null, "input", null, 0, -1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBooleanCondition_ForOutput(), this.getStep(), null, "forOutput", null, 0, -1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBooleanCondition_Contains(), this.getWorkPiece(), this.getWorkPiece_InlcudedIn(), "contains", null, 1, -1, BooleanCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workPieceEClass, WorkPiece.class, "WorkPiece", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkPiece_From(), this.getStep(), null, "from", null, 1, 1, WorkPiece.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -639,6 +660,7 @@ public class SystemPackageImpl extends EPackageImpl implements SystemPackage {
 		initEAttribute(getWorkPiece_Id(), ecorePackage.getEString(), "id", null, 1, 1, WorkPiece.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkPiece_IsStored(), this.getStorage(), null, "isStored", null, 0, -1, WorkPiece.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkPiece_Kind(), ecorePackage.getEString(), "Kind", null, 0, 1, WorkPiece.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkPiece_InlcudedIn(), this.getBooleanCondition(), this.getBooleanCondition_Contains(), "inlcudedIn", null, 0, -1, WorkPiece.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Speed(), ecorePackage.getEDouble(), "Speed", null, 1, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

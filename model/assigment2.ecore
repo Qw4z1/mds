@@ -16,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="forOutput" upperBound="-1"
         eType="#//Step"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" lowerBound="1"
-        upperBound="-1" eType="#//WorkPiece" eOpposite="#//WorkPiece/%"/>
+        upperBound="-1" eType="#//WorkPiece" eOpposite="#//WorkPiece/inlcudedIn"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkPiece">
     <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//Step"/>
@@ -25,8 +25,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="isStored" upperBound="-1"
         eType="#//Storage"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Kind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" upperBound="-1" eType="#//BooleanCondition"
-        eOpposite="#//BooleanCondition/contains"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inlcudedIn" upperBound="-1"
+        eType="#//BooleanCondition" eOpposite="#//BooleanCondition/contains"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Speed" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>

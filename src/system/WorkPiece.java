@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link system.WorkPiece#getId <em>Id</em>}</li>
  *   <li>{@link system.WorkPiece#getIsStored <em>Is Stored</em>}</li>
  *   <li>{@link system.WorkPiece#getKind <em>Kind</em>}</li>
+ *   <li>{@link system.WorkPiece#getInlcudedIn <em>Inlcuded In</em>}</li>
  * </ul>
  * </p>
  *
@@ -146,5 +147,23 @@ public interface WorkPiece extends EObject {
 	 * @generated
 	 */
 	void setKind(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inlcuded In</b></em>' reference list.
+	 * The list contents are of type {@link system.BooleanCondition}.
+	 * It is bidirectional and its opposite is '{@link system.BooleanCondition#getContains <em>Contains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inlcuded In</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inlcuded In</em>' reference list.
+	 * @see system.SystemPackage#getWorkPiece_InlcudedIn()
+	 * @see system.BooleanCondition#getContains
+	 * @model opposite="contains"
+	 * @generated
+	 */
+	EList<BooleanCondition> getInlcudedIn();
 
 } // WorkPiece
