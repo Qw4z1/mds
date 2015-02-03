@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<se.chalmers.arvidk.mse.ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:se.chalmers.arvidk.mse.ims="http://se/chalmers/arvidk/mse/ims">
+  <steps/>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"/>
+</se.chalmers.arvidk.mse.ims:IMS>
