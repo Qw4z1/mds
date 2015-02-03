@@ -3,4 +3,5 @@
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <models xmi:type="notation:Diagram" href="model/IMS.ecore_diagram#_E4KaQKhvEeSeTOkEyo-tPw"/>
   <models xmi:type="ecore:EPackage" href="model/assigment2.ecore#/"/>
+  <models xmi:type="notation:Diagram" href="model/assigment2.ecore_diagram#_FWLTIKq4EeSdIPTqp5kPFg"/>
 </viewpoint:DAnalysis>
