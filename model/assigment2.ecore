@@ -11,46 +11,37 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
-        eType="#//Step"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="forOutput" upperBound="-1"
-        eType="#//Step"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contains" lowerBound="1"
-        upperBound="-1" eType="#//WorkPiece" eOpposite="#//WorkPiece/inlcudedIn"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="has" lowerBound="1" eType="#//Type"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="work" eType="#//WorkPiece"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkPiece">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//Step"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//Step"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="isStored" upperBound="-1"
         eType="#//Storage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inlcudedIn" upperBound="-1"
-        eType="#//BooleanCondition" eOpposite="#//BooleanCondition/contains"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="has" lowerBound="1" eType="#//Type"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finalize" upperBound="-1"
+        eType="#//BooleanCondition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" upperBound="-1"
-        eType="#//WorkPiece"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
-        upperBound="-1" eType="#//WorkPiece"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="overseenBy" eType="#//Person"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputCondition" upperBound="-1"
-        eType="#//BooleanCondition"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="appliesOutputCondition"
-        upperBound="-1" eType="#//BooleanCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overseenBy" upperBound="-1"
+        eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//Step"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" eType="#//Step"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputCondition" eType="#//BooleanCondition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="work" upperBound="-1" eType="#//WorkPiece"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Manufacturing" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="QualityAssurance" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="Transport" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="IMS">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
-        eType="#//BooleanCondition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//Step" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="workPieces" upperBound="-1"

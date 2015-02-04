@@ -10,7 +10,7 @@
       <!-- @generated assignment2 -->
       <package
             uri="http://se/chalmers/arvidk/mse/ims"
-            class="system.SystemPackage"
+            class="assignment2.SystemPackage"
             genModel="model/assignment2.genmodel"/>
    </extension>
 
