@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<se.chalmers.arvidk.mse.ims:IMS
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:se.chalmers.arvidk.mse.ims="http://se/chalmers/arvidk/mse/ims"
+    xsi:schemaLocation="http://se/chalmers/arvidk/mse/ims assigment2.ecore">
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"
+      id="1">
+    <inputCondition
+        name="Kitchen"
+        description="Wood then do chair and table">
+      <has name="Wood"/>
+      <work
+          id="1">
+        <has
+            name="wood"/>
+        <finalize
+            name="Chair"
+            description="Chair">
+          <has
+              name="Chair"/>
+        </finalize>
+      </work>
+    </inputCondition>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="2">
+    <work id="2"
+        isStored="//@storages.0">
+      <has name="Transport"/>
+    </work>
+  </steps>
+  <persons name="Uguudei"
+      role="Manager"/>
+  <persons name="Viktor"
+      role="Manager"/>
+  <persons name="Aita"
+      role="Manager"/>
+  <storages
+      capacity="100.0"
+      has="//@steps.0/@inputCondition/@work"
+      id=""/>
+</se.chalmers.arvidk.mse.ims:IMS>
