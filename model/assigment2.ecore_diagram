@@ -308,7 +308,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_Far_saq4EeSdIPTqp5kPFg" fontName=".Helvetica Neue DeskInterface"/>
     <element xmi:type="ecore:EReference" href="assigment2.ecore#//Storage/has"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Far_sqq4EeSdIPTqp5kPFg" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Far_sqq4EeSdIPTqp5kPFg" points="[0, 0, 218, -165]$[-93, 50, 125, -115]$[-119, 70, 99, -95]$[-218, 165, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FbIEk6q4EeSdIPTqp5kPFg" id="(0.49557522123893805,1.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FbIElKq4EeSdIPTqp5kPFg" id="(0.4945054945054945,0.0)"/>
   </edges>

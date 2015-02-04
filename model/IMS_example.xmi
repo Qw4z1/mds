@@ -4,11 +4,14 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:se.chalmers.arvidk.mse.ims="http://se/chalmers/arvidk/mse/ims"
-    xsi:schemaLocation="http://se/chalmers/arvidk/mse/ims assigment2.ecore">
+    xsi:schemaLocation="http://se/chalmers/arvidk/mse/ims assigment2.ecore"
+    name="Manufacture a chair till final product">
   <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"
-      id="1">
+      overseenBy="//@persons.2"
+      id="1"
+      next="//@steps.1">
     <inputCondition
-        name="Kitchen"
+        name="wood"
         description="Wood then do chair and table">
       <has name="Wood"/>
       <work
@@ -17,19 +20,65 @@
             name="wood"/>
         <finalize
             name="Chair"
-            description="Chair">
+            description="Checks if there chair is good">
           <has
               name="Chair"/>
+          <work
+              id="5"
+              isStored="//@storages.0">
+            <has
+                name="Chair"/>
+          </work>
         </finalize>
       </work>
     </inputCondition>
   </steps>
   <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
-      id="2">
+      overseenBy="//@persons.0"
+      id="2"
+      next="//@steps.2">
     <work id="2"
         isStored="//@storages.0">
       <has name="Transport"/>
     </work>
+  </steps>
+  <steps id="3"
+      next="//@steps.2/@contains">
+    <contains
+        overseenBy="//@persons.1"
+        id="4"
+        next="//@steps.3">
+      <work
+          id="3"
+          isStored="//@storages.0">
+        <has
+            name="Box"/>
+      </work>
+    </contains>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:QualityAssurance"
+      speed="10.0"
+      overseenBy="//@persons.0"
+      id="5"
+      next="//@steps.3/@contains">
+    <contains
+        xsi:type="se.chalmers.arvidk.mse.ims:QualityAssurance"
+        id="6"
+        next="//@steps.3/@contains/@contains">
+      <contains
+          overseenBy="//@persons.1"
+          id="6"/>
+    </contains>
+    <inputCondition
+        name="GoodOrBad"
+        description="If it is bad then do it again until it gets good">
+      <has name="PackagedChair"/>
+      <work
+          id="7">
+        <has
+            name="wood"/>
+      </work>
+    </inputCondition>
   </steps>
   <persons name="Uguudei"
       role="Manager"/>
