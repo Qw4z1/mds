@@ -11,10 +11,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6system,
  system.util
 Export-Package: system,
  system.impl,
- system.util,
- assignment2,
- assignment2.impl,
- assignment2.util
+ system.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
