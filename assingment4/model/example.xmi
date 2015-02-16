@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="ASCII"?>
-<com.chalmers:ManufacturingSystem
+<manufacturingSystem:ManufacturingSystem
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:com.chalmers="com.chalmers.manufacturingSystem"
-    xsi:schemaLocation="com.chalmers.manufacturingSystem manufacturingSystem.ecore"
+    xmlns:manufacturingSystem="http://com.chalmers.manufacturingSystem"
+    xsi:schemaLocation="http://com.chalmers.manufacturingSystem manufacturingSystem.ecore"
     start="//@consistsOf.0"
     end="//@consistsOf.5"
     name="FurnitureSystem"
     responsible="//@staff.3">
   <consistsOf
-      xsi:type="com.chalmers:StoragePoint"
+      xsi:type="manufacturingSystem:StoragePoint"
       transition="//@consistsOf.2 //@consistsOf.1"
       name="RawMaterialStorage"
       responsible="//@staff.3"
       stores="//@uses.0 //@uses.1"/>
   <consistsOf
-      xsi:type="com.chalmers:TransportStep"
+      xsi:type="manufacturingSystem:TransportStep"
       transition="//@consistsOf.2 //@consistsOf.2/@contains/@consistsOf.2"
       name="StartStorageTransport"
       responsible="//@staff.3"
       speed="20">
-    <input xsi:type="com.chalmers:BinaryCondition"
+    <input xsi:type="manufacturingSystem:BinaryCondition"
         left="//@consistsOf.1/@input.1"
         right="//@consistsOf.1/@input.2"
         type="or"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="StartWoodTrans"
         requiresType="//@uses.0"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="StartMetalTrans"
         requiresType="//@uses.1"/>
     <output
@@ -39,19 +39,19 @@
         input="//@consistsOf.1/@input.1"/>
   </consistsOf>
   <consistsOf
-      xsi:type="com.chalmers:CompositeStep"
+      xsi:type="manufacturingSystem:CompositeStep"
       transition="//@consistsOf.3"
       name="CuttingComposite"
       responsible="//@staff.1"
       speed="20">
-    <input xsi:type="com.chalmers:BinaryCondition"
+    <input xsi:type="manufacturingSystem:BinaryCondition"
         left="//@consistsOf.2/@input.1"
         right="//@consistsOf.2/@input.2"
         type="or"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="compInWood"
         requiresType="//@uses.0"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="compInMetal"
         requiresType="//@uses.1"/>
     <output
@@ -65,25 +65,25 @@
         end="//@consistsOf.2/@contains/@consistsOf.6"
         name="ComponentPreparationSystem1">
       <consistsOf
-          xsi:type="com.chalmers:StoragePoint"
+          xsi:type="manufacturingSystem:StoragePoint"
           transition="//@consistsOf.2/@contains/@consistsOf.1"
           name="PreparationStartStorage"
           stores="//@uses.0 //@uses.1"/>
       <consistsOf
-          xsi:type="com.chalmers:TransportStep"
+          xsi:type="manufacturingSystem:TransportStep"
           transition="//@consistsOf.2/@contains/@consistsOf.2"
           name="StartTransport">
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             left="//@consistsOf.2/@contains/@consistsOf.1/@input.2"
             right="//@consistsOf.2/@contains/@consistsOf.1/@input.1"
             type="or"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="metal_trans"
             requiresType="//@uses.1"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="wood_trans"
             requiresType="//@uses.0"/>
         <output
@@ -94,21 +94,21 @@
             input="//@consistsOf.2/@contains/@consistsOf.1/@input.2"/>
       </consistsOf>
       <consistsOf
-          xsi:type="com.chalmers:ManufacturingStep"
+          xsi:type="manufacturingSystem:ManufacturingStep"
           transition="//@consistsOf.2/@contains/@consistsOf.3"
           name="Cutting"
           speed="20">
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             left="//@consistsOf.2/@contains/@consistsOf.2/@input.1"
             right="//@consistsOf.2/@contains/@consistsOf.2/@input.2"
             type="or"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="metal"
             requiresType="//@uses.1"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="wood"
             requiresType="//@uses.0"/>
         <output
@@ -119,19 +119,20 @@
             input="//@consistsOf.2/@contains/@consistsOf.2/@input.2"/>
       </consistsOf>
       <consistsOf
-          xsi:type="com.chalmers:TransportStep"
+          xsi:type="manufacturingSystem:TransportStep"
+          transition="//@consistsOf.2/@contains/@consistsOf.4"
           name="CutTransport">
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             left="//@consistsOf.2/@contains/@consistsOf.3/@input.1"
             right="//@consistsOf.2/@contains/@consistsOf.3/@input.2"
             type="or"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="cutMetal_trans"
             requiresType="//@uses.4"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="cutWood_trans"
             requiresType="//@uses.5"/>
         <output
@@ -142,21 +143,21 @@
             input="//@consistsOf.2/@contains/@consistsOf.3/@input.2"/>
       </consistsOf>
       <consistsOf
-          xsi:type="com.chalmers:ManufacturingStep"
+          xsi:type="manufacturingSystem:ManufacturingStep"
           transition="//@consistsOf.2/@contains/@consistsOf.5"
           name="Drilling"
           speed="20">
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             left="//@consistsOf.2/@contains/@consistsOf.4/@input.1"
             right="//@consistsOf.2/@contains/@consistsOf.4/@input.2"
             type="or"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="cutMetal"
             requiresType="//@uses.4"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="cutWood"
             requiresType="//@uses.5"/>
         <output
@@ -167,38 +168,38 @@
             input="//@consistsOf.2/@contains/@consistsOf.4/@input.2"/>
       </consistsOf>
       <consistsOf
-          xsi:type="com.chalmers:TransportStep"
+          xsi:type="manufacturingSystem:TransportStep"
           transition="//@consistsOf.2/@contains/@consistsOf.6"
           name="EndTransport">
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="metalProduct_trans"
             requiresType="//@uses.3"/>
         <input
-            xsi:type="com.chalmers:WorkPieceCondition"
+            xsi:type="manufacturingSystem:WorkPieceCondition"
             name="woodProduct_trans"
             requiresType="//@uses.2"/>
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             name="overall_input"
             left="//@consistsOf.2/@contains/@consistsOf.5/@input.5"
             right="//@consistsOf.2/@contains/@consistsOf.5/@input.6"
             type="or"/>
         <input
-            xsi:type="com.chalmers:Negation"
+            xsi:type="manufacturingSystem:Negation"
             name="notWood"
             contains="//@consistsOf.2/@contains/@consistsOf.5/@input.1"/>
         <input
-            xsi:type="com.chalmers:Negation"
+            xsi:type="manufacturingSystem:Negation"
             name="notMetal"
             contains="//@consistsOf.2/@contains/@consistsOf.5/@input.0"/>
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             name="input_left"
             left="//@consistsOf.2/@contains/@consistsOf.5/@input.0"
             right="//@consistsOf.2/@contains/@consistsOf.5/@input.3"/>
         <input
-            xsi:type="com.chalmers:BinaryCondition"
+            xsi:type="manufacturingSystem:BinaryCondition"
             name="input_right"
             left="//@consistsOf.2/@contains/@consistsOf.5/@input.1"
             right="//@consistsOf.2/@contains/@consistsOf.5/@input.4"/>
@@ -210,25 +211,25 @@
             input="//@consistsOf.2/@contains/@consistsOf.5/@input.6"/>
       </consistsOf>
       <consistsOf
-          xsi:type="com.chalmers:StoragePoint"
+          xsi:type="manufacturingSystem:StoragePoint"
           name="PreparedEndStorage"
           stores="//@uses.2 //@uses.3"/>
     </contains>
   </consistsOf>
   <consistsOf
-      xsi:type="com.chalmers:QualityAssuranceStep"
+      xsi:type="manufacturingSystem:QualityAssuranceStep"
       transition="//@consistsOf.4"
       name="productQA"
       responsible="//@staff.1"
       speed="10">
-    <input xsi:type="com.chalmers:BinaryCondition"
+    <input xsi:type="manufacturingSystem:BinaryCondition"
         left="//@consistsOf.3/@input.1"
         right="//@consistsOf.3/@input.2"
         type="or"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="qa_wood"
         requiresType="//@uses.2"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="qa_metal"
         requiresType="//@uses.3"/>
     <output
@@ -239,19 +240,19 @@
         input="//@consistsOf.3/@input.2"/>
   </consistsOf>
   <consistsOf
-      xsi:type="com.chalmers:TransportStep"
+      xsi:type="manufacturingSystem:TransportStep"
       transition="//@consistsOf.5"
       name="CuttingCompositeTransport"
       responsible="//@staff.0"
       speed="20">
-    <input xsi:type="com.chalmers:BinaryCondition"
+    <input xsi:type="manufacturingSystem:BinaryCondition"
         left="//@consistsOf.4/@input.1"
         right="//@consistsOf.4/@input.2"
         type="or"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="final_wood"
         requiresType="//@uses.2"/>
-    <input xsi:type="com.chalmers:WorkPieceCondition"
+    <input xsi:type="manufacturingSystem:WorkPieceCondition"
         name="final_metal"
         requiresType="//@uses.3"/>
     <output
@@ -262,7 +263,7 @@
         input="//@consistsOf.4/@input.2"/>
   </consistsOf>
   <consistsOf
-      xsi:type="com.chalmers:StoragePoint"
+      xsi:type="manufacturingSystem:StoragePoint"
       transition="//@consistsOf.0"
       name="ProductStorage"
       responsible="//@staff.3"
@@ -287,4 +288,4 @@
   <staff name="Emma"/>
   <staff name="Peter"/>
   <staff name="Matt"/>
-</com.chalmers:ManufacturingSystem>
+</manufacturingSystem:ManufacturingSystem>
