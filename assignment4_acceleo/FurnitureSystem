@@ -1,0 +1,24 @@
+digraph FurnitureSystem {
+"FurnitureSystem" -> "RawMaterialStorage" [ label="Start"]
+"RawMaterialStorage" -> "CuttingComposite" [ label="fix this!"]
+"CuttingComposite" -> "ComponentPreparationSystem1" [ label="ComposuteStep"]
+"ComponentPreparationSystem1" -> "PreparationStartStorage" [ label="Start"]
+"PreparationStartStorage" -> "StartTransport" [ label="fix this!"]
+"StartTransport" -> "Cutting" [ label="fix this!"]
+"Cutting" -> "CutTransport" [ label="fix this!"]
+"CutTransport" -> "Drilling" [ label="fix this!"]
+"Drilling" -> "EndTransport" [ label="fix this!"]
+"EndTransport" -> "PreparedEndStorage" [ label="fix this!"]
+
+
+
+
+
+
+
+"ComponentPreparationSystem1" -> "PreparedEndStorage" [ label="End"]
+
+
+
+"FurnitureSystem" -> "ProductStorage" [ label="End"]
+}
