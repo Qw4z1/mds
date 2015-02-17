@@ -29,7 +29,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_x2Yrd6cOEeSOlYNOGELBqw"/>
     </children>
     <element xmi:type="ecore:EClass" href="manufacturingSystem.ecore#//ManufacturingSystem"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x2Yrc6cOEeSOlYNOGELBqw" y="12" height="43"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x2Yrc6cOEeSOlYNOGELBqw" x="-15" y="-165" height="43"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_x2ZScKcOEeSOlYNOGELBqw" type="2001" fontName="Segoe UI">
     <children xmi:type="notation:DecorationNode" xmi:id="_x2ZScqcOEeSOlYNOGELBqw" type="5001"/>
