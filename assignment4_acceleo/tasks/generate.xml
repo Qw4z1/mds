@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="assignment4_acceleo">
-    <property name="ECLIPSE_HOME" value="C:/Program Files/Eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../.."/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../Program Files/Eclipse/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../workshpace/assignment4"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="assignment4_acceleo.libraryclasspath">
@@ -21,10 +21,10 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.xmi_2.10.2.v20150123-0348.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl_3.4.0.v20140524-1358.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl_3.4.2.v20140725-2242.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/lpg.runtime.java_2.0.17.v201004271640.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.common_1.2.0.v20140528-1458.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.ecore_3.3.100.v20140524-1358.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.common_1.2.0.v20140610-0641.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ocl.ecore_3.3.100.v20140610-0641.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.common_3.5.1.201409021433.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.model_3.5.1.201409021433.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.acceleo.profiler_3.5.1.201409021433.jar"/>

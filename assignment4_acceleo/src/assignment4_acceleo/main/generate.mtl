@@ -4,7 +4,7 @@
 
 
 
-[template public generateElement(ms : ManufacturingSystem)]
+[template public generateElement(ms : ManufacturingSystem) post(trim())]
 
 [comment  @main/]
 
@@ -20,28 +20,37 @@
 digraph [ms.name/] {
 "[ms.name/]" -> "[ms.start.name/]" ['['/] label="Start"[']'/]
 [Sequence{ms.start.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
-[comment][Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/][/comment]
+[Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
 "[ms.name/]" -> "[ms.end.name/]" ['['/] label="End"[']'/]
+[ms.name/] ['['/]shape=Mdiamond[']'/];
+[ms.end.name/] ['['/]shape=Msquare[']'/];
 }
 [/file]
 [/if]
 [/template]
-[template public insideManufacturing(ms : ManufacturingSystem)]
+[template public insideManufacturing(ms : ManufacturingSystem) post(trim())]
+subgraph cluster[ms.name/] { 
+label = "[ms.name/]"; 
 "[ms.name/]" -> "[ms.start.name/]" ['['/] label="Start"[']'/]
 [if(not (ms.start.transition->size() = 0))]
 [Sequence{ms.start.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
 [comment][Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/][/comment]
 "[ms.name/]" -> "[ms.end.name/]" ['['/] label="End"[']'/]
 [/if]
+}
 [/template]
-[template public manufacturingSystemElement(mse : ManufacturingSystemElement)]
+[template public manufacturingSystemElement(mse : ManufacturingSystemElement)post(trim())]
 [if(not (mse.transition->size() = 0))]
 [if(self.oclIsKindOf(CompositeStep))]
-"[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="ComposuteStep"[']'/]
+"[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="CompositeStep"[']'/]
 [Sequence{mse.oclAsType(CompositeStep).contains}.insideManufacturing()/]
+uguudei [mse.transition->first().name/]
+[comment][Sequence{mse.transition->first()}.manufacturingSystemElement()/][/comment]
 [else]
-"[mse.name/]" -> "[mse.transition->first().name/]" ['['/] label="fix this!"[']'/]
-[Sequence{mse.transition->first()}.manufacturingSystemElement()/]
+[for (it : ManufacturingSystemElement | mse.transition)]
+"[mse.name/]" -> "[it.name/]" ['['/] label="fix this!"[']'/]
+[Sequence{it}.manufacturingSystemElement()/]
+[/for]
 [/if]
 [/if]
 [/template]
