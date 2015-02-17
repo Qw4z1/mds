@@ -1,0 +1,49 @@
+[comment encoding = UTF-8 /]
+[module generate('http://com.chalmers.manufacturingSystem')]
+
+
+
+
+[template public generateElement(ms : ManufacturingSystem)]
+
+[comment  @main/]
+
+[comment] TODO: Fix names such as storage point and end and other stuff [/comment]
+[comment] TODO: Fix validate problem when you generate [/comment]
+[comment] TODO: Support Multiple start and end point, just now it supports only one![/comment]
+[comment] TODO: the end storage point should be the end! [/comment]
+[comment] TODO: Fix the boolean condition [/comment]
+[comment] TODO: Fix the space when its generating [/comment]
+
+[if (CompositeStep.allInstances()->collect(contains)->excludes(self) )]
+[file (ms.name, false, 'Cp1252')]
+digraph [ms.name/] {
+"[ms.name/]" -> "[ms.start.name/]" ['['/] label="Start"[']'/]
+[Sequence{ms.start.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
+[comment][Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/][/comment]
+"[ms.name/]" -> "[ms.end.name/]" ['['/] label="End"[']'/]
+}
+[/file]
+[/if]
+[/template]
+[template public insideManufacturing(ms : ManufacturingSystem)]
+"[ms.name/]" -> "[ms.start.name/]" ['['/] label="Start"[']'/]
+[if(not (ms.start.transition->size() = 0))]
+[Sequence{ms.start.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
+[comment][Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/][/comment]
+"[ms.name/]" -> "[ms.end.name/]" ['['/] label="End"[']'/]
+[/if]
+[/template]
+[template public manufacturingSystemElement(mse : ManufacturingSystemElement)]
+[if(not (mse.transition->size() = 0))]
+[if(self.oclIsKindOf(CompositeStep))]
+"[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="ComposuteStep"[']'/]
+[Sequence{mse.oclAsType(CompositeStep).contains}.insideManufacturing()/]
+[else]
+"[mse.name/]" -> "[mse.transition->first().name/]" ['['/] label="fix this!"[']'/]
+[Sequence{mse.transition->first()}.manufacturingSystemElement()/]
+[/if]
+[/if]
+[/template]
+
+
