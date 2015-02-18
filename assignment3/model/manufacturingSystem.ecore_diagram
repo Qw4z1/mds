@@ -193,6 +193,24 @@
     <element xmi:type="ecore:EClass" href="manufacturingSystem.ecore#//Negation"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kO8wAaf4EeSjXt66Kr8wqw" x="648" y="306" width="100"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_Mj0yELK6EeS2FeNPog-ypg" type="2003" fontName=".Helvetica Neue DeskInterface">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Mj0yErK6EeS2FeNPog-ypg" type="5003"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Mj0yE7K6EeS2FeNPog-ypg" type="7009">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Mj0yFLK6EeS2FeNPog-ypg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Mj0yFbK6EeS2FeNPog-ypg"/>
+    </children>
+    <element xmi:type="ecore:EAnnotation" href="manufacturingSystem.ecore#//%http:%2F%2Fwww.eclipse.org%2FOCL%2FImport%"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mj0yEbK6EeS2FeNPog-ypg" x="-9" y="387"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Mj1ZILK6EeS2FeNPog-ypg" type="2003" fontName=".Helvetica Neue DeskInterface">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Mj1ZIrK6EeS2FeNPog-ypg" type="5003"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Mj1ZI7K6EeS2FeNPog-ypg" type="7009">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Mj1ZJLK6EeS2FeNPog-ypg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Mj1ZJbK6EeS2FeNPog-ypg"/>
+    </children>
+    <element xmi:type="ecore:EAnnotation" href="manufacturingSystem.ecore#//%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FEcore%"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mj1ZIbK6EeS2FeNPog-ypg" x="261" y="378"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_xyN9EacOEeSOlYNOGELBqw"/>
   <element xmi:type="ecore:EPackage" href="manufacturingSystem.ecore#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_x25owKcOEeSOlYNOGELBqw" type="4004" source="_x2YrZqcOEeSOlYNOGELBqw" target="_x2ZSiKcOEeSOlYNOGELBqw">
@@ -423,7 +441,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_Bli_gahaEeSF9vb8Be0ETw" fontName="Segoe UI"/>
     <element xmi:type="ecore:EReference" href="manufacturingSystem.ecore#//ManufacturingSystemElement/transition"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Bli_gqhaEeSF9vb8Be0ETw" points="[8, 0, -35, -2]$[8, -66, -35, -68]$[26, -66, -17, -68]$[43, -66, 0, -68]$[43, 0, 0, -2]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Bli_gqhaEeSF9vb8Be0ETw" points="[0, 0, -43, -2]$[0, -39, -43, -41]$[8, -66, -35, -68]$[26, -66, -17, -68]$[43, -66, 0, -68]$[43, 0, 0, -2]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BlmC0KhaEeSF9vb8Be0ETw" id="(0.40425531914893614,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JKsL8KhaEeSF9vb8Be0ETw" id="(0.6329787234042553,0.06818181818181818)"/>
   </edges>
