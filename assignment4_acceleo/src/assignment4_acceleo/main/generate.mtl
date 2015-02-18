@@ -52,7 +52,7 @@ label = "[ms.name/]";
 [/for]
 [/template]
 
-[template public booleanCondition(mse : ManufacturingSystemElement)post(trim())]
+[template public booleanCondition(mse : ManufacturingSystemElement)post(replaceAll('\n', '').trim())]
 [if (mse.oclIsKindOf(Step))]
 [for (ic: InputCondition | mse.oclAsType(Step).input)]
 [if (ic.oclIsKindOf(BinaryCondition))]
