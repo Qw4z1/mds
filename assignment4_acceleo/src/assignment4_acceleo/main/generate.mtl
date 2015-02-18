@@ -47,11 +47,7 @@ label = "[ms.name/]";
 [/if]
 [Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
-<<<<<<< HEAD
 "[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition()/]"[']'/]
-=======
-"[mse.name/ ]" -> "[it.name/]" ['['/] label="Wood()/Metal()"[']'/]
->>>>>>> 50f38e2105f70a48521ad95d6b17b42ddaa8d797
 [/for]	
 [/for]
 [/template]
