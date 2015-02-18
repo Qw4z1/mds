@@ -21,6 +21,8 @@ digraph [ms.name/] {
 [ms.name/] ['['/]shape=Mdiamond[']'/] ['['/]color=navy[']'/];
 [ms.end.name/] ['['/]shape=Msquare[']'/] ['['/]color=green[']'/];
 [Sequence{Responsible.allInstances().oclAsType(Responsible)}.responsibleDrawShape()/] 
+[Sequence{StoragePoint.allInstances().oclAsType(StoragePoint)}.storagePointStepShape()/]
+[Sequence{TransportStep.allInstances().oclAsType(TransportStep)}.transportStepShape()/]
 }
 [/file]
 [/if]
@@ -98,6 +100,18 @@ label = "[ms.name/]";
 [template public responsibleDrawShape(people : Bag(Responsible))post(trim())]
 [for (it : Responsible | people)]
 	"[it.name/]" ['['/]shape=box,style=filled,color=".7 .3 1.0"[']'/]
+[/for]
+[/template]
+
+[template public storagePointStepShape(people : Bag(StoragePoint))post(trim())]
+[for (it : StoragePoint | people)]
+ "[it.name/]" ['['/]shape=house,style=filled,color=orange[']'/]
+[/for]
+[/template]
+
+[template public transportStepShape(people : Bag(TransportStep))post(trim())]
+[for (it : TransportStep | people)]
+ "[it.name/]" ['['/]shape=septagon,style=filled,color=lightskyblue[']'/]
 [/for]
 [/template]
 

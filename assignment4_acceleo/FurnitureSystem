@@ -1,5 +1,5 @@
 digraph FurnitureSystem {
-"FurnitureSystem" -> "RawMaterialStorage" [ label="Start"]
+"FurnitureSystem" -> "RawMaterialStorage" [ label="Start"] [color=navy]
 "Matt" -> "RawMaterialStorage"  [ label="Responsible", color=lightgrey]
 "RawMaterialStorage" -> "CuttingComposite" [ label="compInWood or compInMetal"]
 "RawMaterialStorage" -> "StartStorageTransport" [ label="StartWoodTrans or StartMetalTrans"]
@@ -8,7 +8,7 @@ digraph FurnitureSystem {
 "StartStorageTransport" -> "Cutting" [ label="metal or wood"]
 "CuttingComposite" -> "ComponentPreparationSystem1" [ label="CompositeStep"]
 subgraph clusterComponentPreparationSystem1 { 
-label = "ComponentPreparationSystem1"; 
+label = "ComponentPreparationSystem1";
 "ComponentPreparationSystem1" -> "PreparationStartStorage" [ label="Start"]
 "PreparationStartStorage" -> "StartTransport" [ label="wood_trans or metal_trans"]
 
@@ -17,9 +17,9 @@ label = "ComponentPreparationSystem1";
 "Cutting" -> "CutTransport" [ label="cutMetal_trans or cutWood_trans"]
 
 
-"Drilling" -> "EndTransport" [ label="metalProduct_trans and notWood or woodProduct_trans and notMetal metalProduct_trans and notWood woodProduct_trans and notMetal"]
+"Drilling" -> "EndTransport" [ label="metalProduct_trans and notWood or woodProduct_trans and notMetalmetalProduct_trans and notWoodwoodProduct_trans and notMetal"]
 
-"EndTransport" -> "PreparedEndStorage" [ label=""]
+"EndTransport" -> "PreparedEndStorage" [ label=""] 
 "ComponentPreparationSystem1" -> "PreparedEndStorage" [ label="End"]
 }
 "Emma" -> "CuttingComposite"  [ label="Responsible", color=lightgrey]
@@ -29,12 +29,12 @@ label = "ComponentPreparationSystem1";
 "Lisa" -> "CuttingCompositeTransport"  [ label="Responsible", color=lightgrey]
 "CuttingCompositeTransport" -> "ProductStorage" [ label=""]
 "Matt" -> "ProductStorage"  [ label="Responsible", color=lightgrey]
-"ProductStorage" -> "RawMaterialStorage" [ label=""]
-"FurnitureSystem" -> "ProductStorage" [ label="End"]
-FurnitureSystem [shape=Mdiamond];
-ProductStorage [shape=Msquare];
-"Lisa" [shape=box,style=filled,color=".7 .3 1.0"]
+"ProductStorage" -> "RawMaterialStorage" [ label=""] [color=green]
+"FurnitureSystem" -> "ProductStorage" [ label="End"] [color=navy]
+FurnitureSystem [shape=Mdiamond] [color=navy];
+ProductStorage [shape=Msquare] [color=green];
+"Peter" [shape=box,style=filled,color=".7 .3 1.0"]
+	"Lisa" [shape=box,style=filled,color=".7 .3 1.0"]
 	"Matt" [shape=box,style=filled,color=".7 .3 1.0"]
-	"Emma" [shape=box,style=filled,color=".7 .3 1.0"]
-	"Peter" [shape=box,style=filled,color=".7 .3 1.0"]
+	"Emma" [shape=box,style=filled,color=".7 .3 1.0"] 
 }
