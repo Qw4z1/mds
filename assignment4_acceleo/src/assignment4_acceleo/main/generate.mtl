@@ -5,13 +5,6 @@
 [template public generateElement(ms : ManufacturingSystem) post(trim())]
 
 [comment  @main/]
-
-[comment] TODO: Fix names such as storage point and end and other stuff [/comment]
-[comment] TODO: Fix validate problem when you generate [/comment]
-[comment] TODO: Support Multiple start and end point, just now it supports only one![/comment]
-[comment] TODO: the end storage point should be the end! [/comment]
-[comment] TODO: Fix the boolean condition [/comment]
-
 [if (CompositeStep.allInstances()->collect(contains)->excludes(self) )]
 [file (ms.name, false, 'Cp1252')] 
 digraph [ms.name/] {
@@ -49,12 +42,18 @@ label = "[ms.name/]";
 [/if]
 [Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
-"[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition()/]"[']'/]
+[if(mse.oclIsKindOf(Step) and mse.oclAsType(Step).speed->size()<> 0)]
+"[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition().trim()/] : [mse.oclAsType(Step).speed/]"[']'/]
+[else]
+"[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition().trim()/]"[']'/]
+[/if]
 [/for]	
 [/for]
 [/template]
 
-[template public booleanCondition(mse : ManufacturingSystemElement)post(replaceAll('\n', '').trim())]
+[comment]Extra side functions[/comment]
+
+[template public booleanCondition(mse : ManufacturingSystemElement)post(substituteAll(lineSeparator(), '').trim())]
 [if (mse.oclIsKindOf(Step))]
 [for (ic: InputCondition | mse.oclAsType(Step).input)]
 [if (ic.oclIsKindOf(BinaryCondition))]
@@ -90,13 +89,9 @@ label = "[ms.name/]";
 [/for]
 [/template]
 
-[template public responsible(it : ManufacturingSystemElement)post(trim())]
-[if (it.responsible->size() <> 0)]
-	"[it.responsible.name/]" -> "[it.name/]"  ['['/] label="Responsible", color=lightgrey[']'/]
-[/if]
-[/template]
 
-[comment]Draw a shape and color for people[/comment]
+[comment]Shapes and colors[/comment]
+
 [template public responsibleDrawShape(people : Bag(Responsible))post(trim())]
 [for (it : Responsible | people)]
 	"[it.name/]" ['['/]shape=box,style=filled,color=".7 .3 1.0"[']'/]
@@ -116,16 +111,8 @@ label = "[ms.name/]";
 [/template]
 
 
-
-[comment]Macros Doesn't work why?[/comment]
-[comment][macro public start(ms : ManufacturingSystem) : String][/comment]
-[comment][for (it : ManufacturingSystemElement | ms.start)]
-"[ms.name/]" -> "[it.name/]" ['['/] label="Start"[']'/]	
-[/for][/comment]
-[comment][/macro][/comment]
-
-[comment][macro public end(ms : ManufacturingSystem) : String]
-	[for (it : ManufacturingSystemElement | ms.end)]
-	"[ms.name/]" -> "[it.name/]" ['['/] label="Start"[']'/]	
-	[/for]
-[/macro][/comment]
+[template public responsible(it : ManufacturingSystemElement)post(trim())]
+[if (it.responsible->size() <> 0)]
+	"[it.responsible.name/]" -> "[it.name/]"  ['['/] label="Responsible", color=lightgrey[']'/]
+[/if]
+[/template]

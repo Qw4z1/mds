@@ -4,37 +4,46 @@ digraph FurnitureSystem {
 "RawMaterialStorage" -> "CuttingComposite" [ label="compInWood or compInMetal"]
 "RawMaterialStorage" -> "StartStorageTransport" [ label="StartWoodTrans or StartMetalTrans"]
 "Matt" -> "StartStorageTransport"  [ label="Responsible", color=lightgrey]
-"StartStorageTransport" -> "CuttingComposite" [ label="compInWood or compInMetal"]
-"StartStorageTransport" -> "Cutting" [ label="metal or wood"]
+"StartStorageTransport" -> "CuttingComposite" [ label="compInWood or compInMetal : 20"]
+"StartStorageTransport" -> "Cutting" [ label="metal or wood : 20"]
 "CuttingComposite" -> "ComponentPreparationSystem1" [ label="CompositeStep"]
 subgraph clusterComponentPreparationSystem1 { 
 label = "ComponentPreparationSystem1";
 "ComponentPreparationSystem1" -> "PreparationStartStorage" [ label="Start"]
 "PreparationStartStorage" -> "StartTransport" [ label="wood_trans or metal_trans"]
 
-"StartTransport" -> "Cutting" [ label="metal or wood"]
+"StartTransport" -> "Cutting" [ label="metal or wood : 0"]
 
-"Cutting" -> "CutTransport" [ label="cutMetal_trans or cutWood_trans"]
+"Cutting" -> "CutTransport" [ label="cutMetal_trans or cutWood_trans : 20"]
 
 
-"Drilling" -> "EndTransport" [ label="metalProduct_trans and notWood or woodProduct_trans and notMetalmetalProduct_trans and notWoodwoodProduct_trans and notMetal"]
+"Drilling" -> "EndTransport" [ label="metalProduct_trans and notWood or woodProduct_trans and notMetalmetalProduct_trans and notWoodwoodProduct_trans and notMetal : 20"]
 
-"EndTransport" -> "PreparedEndStorage" [ label=""] 
+"EndTransport" -> "PreparedEndStorage" [ label=" : 0"] 
 "ComponentPreparationSystem1" -> "PreparedEndStorage" [ label="End"]
 }
 "Emma" -> "CuttingComposite"  [ label="Responsible", color=lightgrey]
-"CuttingComposite" -> "productQA" [ label="qa_wood or qa_metal"]
+"CuttingComposite" -> "productQA" [ label="qa_wood or qa_metal : 20"]
 "Emma" -> "productQA"  [ label="Responsible", color=lightgrey]
-"productQA" -> "CuttingCompositeTransport" [ label="final_wood or final_metal"]
+"productQA" -> "CuttingCompositeTransport" [ label="final_wood or final_metal : 10"]
 "Lisa" -> "CuttingCompositeTransport"  [ label="Responsible", color=lightgrey]
-"CuttingCompositeTransport" -> "ProductStorage" [ label=""]
+"CuttingCompositeTransport" -> "ProductStorage" [ label=" : 20"]
 "Matt" -> "ProductStorage"  [ label="Responsible", color=lightgrey]
 "ProductStorage" -> "RawMaterialStorage" [ label=""] [color=green]
 "FurnitureSystem" -> "ProductStorage" [ label="End"] [color=navy]
 FurnitureSystem [shape=Mdiamond] [color=navy];
 ProductStorage [shape=Msquare] [color=green];
-"Peter" [shape=box,style=filled,color=".7 .3 1.0"]
-	"Lisa" [shape=box,style=filled,color=".7 .3 1.0"]
+"Lisa" [shape=box,style=filled,color=".7 .3 1.0"]
+	"Peter" [shape=box,style=filled,color=".7 .3 1.0"]
 	"Matt" [shape=box,style=filled,color=".7 .3 1.0"]
 	"Emma" [shape=box,style=filled,color=".7 .3 1.0"] 
+"ProductStorage" [shape=house,style=filled,color=orange]
+ "PreparationStartStorage" [shape=house,style=filled,color=orange]
+ "RawMaterialStorage" [shape=house,style=filled,color=orange]
+ "PreparedEndStorage" [shape=house,style=filled,color=orange]
+"CutTransport" [shape=septagon,style=filled,color=lightskyblue]
+ "StartStorageTransport" [shape=septagon,style=filled,color=lightskyblue]
+ "EndTransport" [shape=septagon,style=filled,color=lightskyblue]
+ "CuttingCompositeTransport" [shape=septagon,style=filled,color=lightskyblue]
+ "StartTransport" [shape=septagon,style=filled,color=lightskyblue]
 }
