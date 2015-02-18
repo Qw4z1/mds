@@ -1,7 +1,9 @@
 digraph FurnitureSystem {
 "FurnitureSystem" -> "RawMaterialStorage" [ label="Start"]
+"Matt" -> "RawMaterialStorage"  [ label="Responsible", color=lightgrey]
 "RawMaterialStorage" -> "CuttingComposite" [ label="fix this!"]
 "RawMaterialStorage" -> "StartStorageTransport" [ label="fix this!"]
+"Matt" -> "StartStorageTransport"  [ label="Responsible", color=lightgrey]
 "StartStorageTransport" -> "CuttingComposite" [ label="fix this!"]
 "StartStorageTransport" -> "Cutting" [ label="fix this!"]
 "CuttingComposite" -> "ComponentPreparationSystem1" [ label="ComposuteStep"]
@@ -9,17 +11,30 @@ subgraph clusterComponentPreparationSystem1 {
 label = "ComponentPreparationSystem1"; 
 "ComponentPreparationSystem1" -> "PreparationStartStorage" [ label="Start"]
 "PreparationStartStorage" -> "StartTransport" [ label="fix this!"]
+
 "StartTransport" -> "Cutting" [ label="fix this!"]
+
 "Cutting" -> "CutTransport" [ label="fix this!"]
+
+
 "Drilling" -> "EndTransport" [ label="fix this!"]
+
 "EndTransport" -> "PreparedEndStorage" [ label="fix this!"]
 "ComponentPreparationSystem1" -> "PreparedEndStorage" [ label="End"]
 }
+"Emma" -> "CuttingComposite"  [ label="Responsible", color=lightgrey]
 "CuttingComposite" -> "productQA" [ label="fix this!"]
+"Emma" -> "productQA"  [ label="Responsible", color=lightgrey]
 "productQA" -> "CuttingCompositeTransport" [ label="fix this!"]
+"Lisa" -> "CuttingCompositeTransport"  [ label="Responsible", color=lightgrey]
 "CuttingCompositeTransport" -> "ProductStorage" [ label="fix this!"]
+"Matt" -> "ProductStorage"  [ label="Responsible", color=lightgrey]
 "ProductStorage" -> "RawMaterialStorage" [ label="fix this!"]
 "FurnitureSystem" -> "ProductStorage" [ label="End"]
 FurnitureSystem [shape=Mdiamond];
 ProductStorage [shape=Msquare];
+"Emma" [shape=box,style=filled,color=".7 .3 1.0"]
+	"Matt" [shape=box,style=filled,color=".7 .3 1.0"]
+	"Peter" [shape=box,style=filled,color=".7 .3 1.0"]
+	"Lisa" [shape=box,style=filled,color=".7 .3 1.0"]
 }

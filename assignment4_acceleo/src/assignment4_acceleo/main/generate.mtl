@@ -22,10 +22,13 @@ digraph [ms.name/] {
 [Sequence{ms}.end()/]
 [ms.name/] ['['/]shape=Mdiamond[']'/];
 [ms.end.name/] ['['/]shape=Msquare[']'/];
+[Sequence{Responsible.allInstances().oclAsType(Responsible)}.responsibleDrawShape()/]
 }
 [/file]
 [/if]
 [/template]
+
+
 [template public insideManufacturing(ms : ManufacturingSystem) post(trim())]
 subgraph cluster[ms.name/] { 
 label = "[ms.name/]"; 
@@ -36,12 +39,15 @@ label = "[ms.name/]";
 [Sequence{ms}.end()/]
 }
 [/template]
+
+
 [template public manufacturingSystemElementStep(mses : Sequence(ManufacturingSystemElement))post(trim())]
 [for (mse : ManufacturingSystemElement | mses)]
 [if(mse.oclIsKindOf(CompositeStep))]
 "[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="ComposuteStep"[']'/]
 [Sequence{mse.oclAsType(CompositeStep).contains}.insideManufacturing()/]
 [/if]
+[Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
 "[mse.name/]" -> "[it.name/]" ['['/] label="fix this!"[']'/]
 [/for]	
@@ -60,6 +66,24 @@ label = "[ms.name/]";
 "[ms.name/]" -> "[it.name/]" ['['/] label="End"[']'/]	
 [/for]
 [/template]
+
+[template public responsible(it : ManufacturingSystemElement)post(trim())]
+[if (it.responsible->size() <> 0)]
+	"[it.responsible.name/]" -> "[it.name/]"  ['['/] label="Responsible", color=lightgrey[']'/]
+[/if]
+[/template]
+
+[comment]Draw a shape and color for people[/comment]
+[template public responsibleDrawShape(people : Bag(Responsible))post(trim())]
+[for (it : Responsible | people)]
+	"[it.name/]" ['['/]shape=box,style=filled,color=".7 .3 1.0"[']'/]
+[/for]
+[/template]
+
+
+
+
+
 
 
 [comment]Macros Doesn't work why?[/comment]
