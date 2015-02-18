@@ -2,8 +2,6 @@
 [module generate('http://com.chalmers.manufacturingSystem')]
 
 
-
-
 [template public generateElement(ms : ManufacturingSystem) post(trim())]
 
 [comment  @main/]
@@ -15,14 +13,14 @@
 [comment] TODO: Fix the boolean condition [/comment]
 
 [if (CompositeStep.allInstances()->collect(contains)->excludes(self) )]
-[file (ms.name, false, 'Cp1252')]
+[file (ms.name, false, 'Cp1252')] 
 digraph [ms.name/] {
-[Sequence{ms}.start()/]
-[Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/]
-[Sequence{ms}.end()/]
-[ms.name/] ['['/]shape=Mdiamond[']'/];
-[ms.end.name/] ['['/]shape=Msquare[']'/];
-[Sequence{Responsible.allInstances().oclAsType(Responsible)}.responsibleDrawShape()/]
+[Sequence{ms}.start()/] ['['/]color=navy[']'/]
+[Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/] ['['/]color=green[']'/]
+[Sequence{ms}.end()/] ['['/]color=navy[']'/]
+[ms.name/] ['['/]shape=Mdiamond[']'/] ['['/]color=navy[']'/];
+[ms.end.name/] ['['/]shape=Msquare[']'/] ['['/]color=green[']'/];
+[Sequence{Responsible.allInstances().oclAsType(Responsible)}.responsibleDrawShape()/] 
 }
 [/file]
 [/if]
@@ -31,10 +29,10 @@ digraph [ms.name/] {
 
 [template public insideManufacturing(ms : ManufacturingSystem) post(trim())]
 subgraph cluster[ms.name/] { 
-label = "[ms.name/]"; 
+label = "[ms.name/]";
 [Sequence{ms}.start()/]
 [if(not (ms.start.transition->size() = 0))]
-[Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/]
+[Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/] 
 [/if]
 [Sequence{ms}.end()/]
 }
@@ -49,7 +47,11 @@ label = "[ms.name/]";
 [/if]
 [Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
+<<<<<<< HEAD
 "[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition()/]"[']'/]
+=======
+"[mse.name/ ]" -> "[it.name/]" ['['/] label="Wood()/Metal()"[']'/]
+>>>>>>> 50f38e2105f70a48521ad95d6b17b42ddaa8d797
 [/for]	
 [/for]
 [/template]
@@ -105,10 +107,6 @@ label = "[ms.name/]";
 
 
 
-
-
-
-
 [comment]Macros Doesn't work why?[/comment]
 [comment][macro public start(ms : ManufacturingSystem) : String][/comment]
 [comment][for (it : ManufacturingSystemElement | ms.start)]
@@ -121,4 +119,3 @@ label = "[ms.name/]";
 	"[ms.name/]" -> "[it.name/]" ['['/] label="Start"[']'/]	
 	[/for]
 [/macro][/comment]
-
