@@ -1,2 +1,25 @@
 digraph FurnitureSystem {
 "FurnitureSystem" -> "RawMaterialStorage" [ label="Start"]
+"RawMaterialStorage" -> "CuttingComposite" [ label="fix this!"]
+"RawMaterialStorage" -> "StartStorageTransport" [ label="fix this!"]
+"StartStorageTransport" -> "CuttingComposite" [ label="fix this!"]
+"StartStorageTransport" -> "Cutting" [ label="fix this!"]
+"CuttingComposite" -> "ComponentPreparationSystem1" [ label="ComposuteStep"]
+subgraph clusterComponentPreparationSystem1 { 
+label = "ComponentPreparationSystem1"; 
+"ComponentPreparationSystem1" -> "PreparationStartStorage" [ label="Start"]
+"PreparationStartStorage" -> "StartTransport" [ label="fix this!"]
+"StartTransport" -> "Cutting" [ label="fix this!"]
+"Cutting" -> "CutTransport" [ label="fix this!"]
+"Drilling" -> "EndTransport" [ label="fix this!"]
+"EndTransport" -> "PreparedEndStorage" [ label="fix this!"]
+"ComponentPreparationSystem1" -> "PreparedEndStorage" [ label="End"]
+}
+"CuttingComposite" -> "productQA" [ label="fix this!"]
+"productQA" -> "CuttingCompositeTransport" [ label="fix this!"]
+"CuttingCompositeTransport" -> "ProductStorage" [ label="fix this!"]
+"ProductStorage" -> "RawMaterialStorage" [ label="fix this!"]
+"FurnitureSystem" -> "ProductStorage" [ label="End"]
+FurnitureSystem [shape=Mdiamond];
+ProductStorage [shape=Msquare];
+}

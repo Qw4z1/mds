@@ -13,15 +13,13 @@
 [comment] TODO: Support Multiple start and end point, just now it supports only one![/comment]
 [comment] TODO: the end storage point should be the end! [/comment]
 [comment] TODO: Fix the boolean condition [/comment]
-[comment] TODO: Fix the space when its generating [/comment]
 
 [if (CompositeStep.allInstances()->collect(contains)->excludes(self) )]
 [file (ms.name, false, 'Cp1252')]
 digraph [ms.name/] {
-"[ms.name/]" -> "[ms.start.name/]" ['['/] label="Start"[']'/]
-[Sequence{ms.start.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
-[Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
-"[ms.name/]" -> "[ms.end.name/]" ['['/] label="End"[']'/]
+[Sequence{ms}.start()/]
+[Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/]
+[Sequence{ms}.end()/]
 [ms.name/] ['['/]shape=Mdiamond[']'/];
 [ms.end.name/] ['['/]shape=Msquare[']'/];
 }
@@ -31,28 +29,49 @@ digraph [ms.name/] {
 [template public insideManufacturing(ms : ManufacturingSystem) post(trim())]
 subgraph cluster[ms.name/] { 
 label = "[ms.name/]"; 
-"[ms.name/]" -> "[ms.start.name/]" ['['/] label="Start"[']'/]
+[Sequence{ms}.start()/]
 [if(not (ms.start.transition->size() = 0))]
-[Sequence{ms.start.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/]
-[comment][Sequence{ms.end.oclAsType(ManufacturingSystemElement)->first()}.manufacturingSystemElement()/][/comment]
-"[ms.name/]" -> "[ms.end.name/]" ['['/] label="End"[']'/]
+[Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/]
 [/if]
+[Sequence{ms}.end()/]
 }
 [/template]
-[template public manufacturingSystemElement(mse : ManufacturingSystemElement)post(trim())]
-[if(not (mse.transition->size() = 0))]
-[if(self.oclIsKindOf(CompositeStep))]
-"[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="CompositeStep"[']'/]
+[template public manufacturingSystemElementStep(mses : Sequence(ManufacturingSystemElement))post(trim())]
+[for (mse : ManufacturingSystemElement | mses)]
+[if(mse.oclIsKindOf(CompositeStep))]
+"[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="ComposuteStep"[']'/]
 [Sequence{mse.oclAsType(CompositeStep).contains}.insideManufacturing()/]
-uguudei [mse.transition->first().name/]
-[comment][Sequence{mse.transition->first()}.manufacturingSystemElement()/][/comment]
-[else]
+[/if]
 [for (it : ManufacturingSystemElement | mse.transition)]
 "[mse.name/]" -> "[it.name/]" ['['/] label="fix this!"[']'/]
-[Sequence{it}.manufacturingSystemElement()/]
+[/for]	
 [/for]
-[/if]
-[/if]
 [/template]
 
+
+[template public start(ms : ManufacturingSystem)post(trim())]
+[for (it : ManufacturingSystemElement | ms.start)]
+"[ms.name/]" -> "[it.name/]" ['['/] label="Start"[']'/]	
+[/for]
+[/template]
+
+[template public end(ms : ManufacturingSystem)post(trim())]
+[for (it : ManufacturingSystemElement | ms.end)]
+"[ms.name/]" -> "[it.name/]" ['['/] label="End"[']'/]	
+[/for]
+[/template]
+
+
+[comment]Macros Doesn't work why?[/comment]
+[comment][macro public start(ms : ManufacturingSystem) : String][/comment]
+[comment][for (it : ManufacturingSystemElement | ms.start)]
+"[ms.name/]" -> "[it.name/]" ['['/] label="Start"[']'/]	
+[/for][/comment]
+[comment][/macro][/comment]
+
+[comment][macro public end(ms : ManufacturingSystem) : String]
+	[for (it : ManufacturingSystemElement | ms.end)]
+	"[ms.name/]" -> "[it.name/]" ['['/] label="Start"[']'/]	
+	[/for]
+[/macro][/comment]
 
