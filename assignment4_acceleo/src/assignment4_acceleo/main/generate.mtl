@@ -49,7 +49,7 @@ label = "[ms.name/]";
 [/if]
 [Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
-"[mse.name/]" -> "[it.name/]" ['['/] label="fix this!"[']'/]
+"[mse.name/]" -> "[it.name/]" ['['/] label="wood()/metal()"[']'/]
 [/for]	
 [/for]
 [/template]
