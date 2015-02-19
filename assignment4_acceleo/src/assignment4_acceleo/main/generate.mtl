@@ -15,7 +15,7 @@ digraph [ms.name/] {
 [ms.end.name/] ['['/]shape=Msquare[']'/] ['['/]color=green[']'/];
 [Sequence{Responsible.allInstances().oclAsType(Responsible)}.responsibleDrawShape()/] 
 [Sequence{StoragePoint.allInstances().oclAsType(StoragePoint)}.storagePointStepShape()/]
-[Sequence{TransportStep.allInstances().oclAsType(TransportStep)}.transportStepShape()/]
+[comment][Sequence{TransportStep.allInstances().oclAsType(TransportStep)}.transportStepShape()/][/comment]
 }
 [/file]
 [/if]
@@ -42,12 +42,11 @@ label = "[ms.name/]";
 [/if]
 [Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
-[if(mse.oclIsKindOf(Step) and mse.oclAsType(Step).speed->size()<> 0)]
-"[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition().trim()/] : [mse.oclAsType(Step).speed/]"[']'/]
-[else]
 "[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition().trim()/]"[']'/]
-[/if]
 [/for]	
+[if(mse.oclIsKindOf(Step) and mse.oclAsType(Step).speed->size()<> 0)]
+[mse.name/] ['['/]label="[mse.name/], s=[mse.oclAsType(Step).speed/]"[']'/]
+[/if]
 [/for]
 [/template]
 
@@ -69,7 +68,7 @@ label = "[ms.name/]";
 
 [template public evaluateCondition(cond : InputCondition)post(trim())]
 [if cond.oclIsKindOf(WorkPieceCondition)] 
-[cond.oclAsType(WorkPieceCondition).name/]
+[cond.oclAsType(WorkPieceCondition).requiresType.name/]
 [elseif (cond.oclIsKindOf(Negation))]
 [cond.oclAsType(Negation).name/]
 [elseif (cond.oclIsKindOf(BinaryCondition))]
@@ -104,11 +103,11 @@ label = "[ms.name/]";
 [/for]
 [/template]
 
-[template public transportStepShape(people : Bag(TransportStep))post(trim())]
+[comment][template public transportStepShape(people : Bag(TransportStep))post(trim())]
 [for (it : TransportStep | people)]
  "[it.name/]" ['['/]shape=septagon,style=filled,color=lightskyblue[']'/]
 [/for]
-[/template]
+[/template][/comment]
 
 
 [template public responsible(it : ManufacturingSystemElement)post(trim())]
