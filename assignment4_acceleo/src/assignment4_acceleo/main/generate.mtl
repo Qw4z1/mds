@@ -22,32 +22,43 @@ digraph [ms.name/] {
 [/template]
 
 
-[template public insideManufacturing(ms : ManufacturingSystem) post(trim())]
-subgraph cluster[ms.name/] { 
-label = "[ms.name/]";
+[template public insideManufacturing(msc : CompositeStep) post(trim()){ms : ManufacturingSystem = msc.contains;}]
+subgraph cluster[msc.name/] { 
+label = "[msc.name/], s=[msc.speed/]";
 [Sequence{ms}.start()/]
 [if(not (ms.start.transition->size() = 0))]
 [Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/] 
 [/if]
 [Sequence{ms}.end()/]
 }
+[if (msc.responsible->size() <> 0)]
+	"[msc.responsible.name/]" -> "[ms.start->first().name/]"  ['['/] lhead=cluster[msc.name/],label="Responsible", color=lightgrey[']'/]
+[/if]
 [/template]
 
 
 [template public manufacturingSystemElementStep(mses : Sequence(ManufacturingSystemElement))post(trim())]
 [for (mse : ManufacturingSystemElement | mses)]
 [if(mse.oclIsKindOf(CompositeStep))]
-"[mse.name/]" -> "[mse.oclAsType(CompositeStep).contains.name/]" ['['/] label="CompositeStep"[']'/]
-[Sequence{mse.oclAsType(CompositeStep).contains}.insideManufacturing()/]
-[/if]
+[Sequence{mse.oclAsType(CompositeStep)}.insideManufacturing()/]
+[for (it : ManufacturingSystemElement | mse.transition)]
+"[mse.oclAsType(CompositeStep).contains.end->first().name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition().trim()/]"[']'/]
+[/for]	
+[else]
 [Sequence{mse}.responsible()/]
 [for (it : ManufacturingSystemElement | mse.transition)]
+[if(it.oclIsKindOf(CompositeStep))]
+"[mse.name/]" -> "[it.oclAsType(CompositeStep).contains.start->first().name/]" ['['/] label="[it.booleanCondition().trim()/]"[']'/]
+[else]
 "[mse.name/]" -> "[it.name/]" ['['/] label="[it.booleanCondition().trim()/]"[']'/]
+[/if]
 [/for]	
 [if(mse.oclIsKindOf(Step) and mse.oclAsType(Step).speed->size()<> 0)]
 [mse.name/] ['['/]label="[mse.name/], s=[mse.oclAsType(Step).speed/]"[']'/]
 [/if]
+[/if]
 [/for]
+
 [/template]
 
 [comment]Extra side functions[/comment]
