@@ -9,7 +9,6 @@ digraph FurnitureSystem {
 StartStorageTransport [label="StartStorageTransport, s=20"]
 subgraph clusterCuttingComposite { 
 label = "CuttingComposite, s=20";
-"ComponentPreparationSystem1" -> "PreparationStartStorage" [ label="Start"]
 "PreparationStartStorage" -> "StartTransport" [ label="Wood or Metal"]
 
 "StartTransport" -> "Cutting" [ label="Metal or Wood"]
@@ -25,7 +24,6 @@ Drilling [label="Drilling, s=20"]
 
 "EndTransport" -> "PreparedEndStorage" [ label=""]
 EndTransport [label="EndTransport, s=0"] 
-"ComponentPreparationSystem1" -> "PreparedEndStorage" [ label="End"]
 }
 	"Emma" -> "PreparationStartStorage"  [ lhead=clusterCuttingComposite,label="Responsible", color=lightgrey]
 "PreparedEndStorage" -> "productQA" [ label="WoodProduct or MetalProduct"]

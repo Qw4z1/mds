@@ -25,11 +25,9 @@ digraph [ms.name/] {
 [template public insideManufacturing(msc : CompositeStep) post(trim()){ms : ManufacturingSystem = msc.contains;}]
 subgraph cluster[msc.name/] { 
 label = "[msc.name/], s=[msc.speed/]";
-[Sequence{ms}.start()/]
 [if(not (ms.start.transition->size() = 0))]
 [Sequence{ms.consistsOf.oclAsType(ManufacturingSystemElement)}.manufacturingSystemElementStep()/] 
 [/if]
-[Sequence{ms}.end()/]
 }
 [if (msc.responsible->size() <> 0)]
 	"[msc.responsible.name/]" -> "[ms.start->first().name/]"  ['['/] lhead=cluster[msc.name/],label="Responsible", color=lightgrey[']'/]
