@@ -1,0 +1,97 @@
+modeltype IN uses "MFS";
+modeltype OUT uses "MFS";
+
+transformation flatten(in mfs:IN, out mfsFlatten:OUT);
+
+main() {
+	mfs.rootObjects()[ManufacturingSystem] -> map MFS2FLAT();
+}
+
+
+mapping ManufacturingSystem::MFS2FLAT(): ManufacturingSystem{
+	name := self.name;
+	consistsOf :=  self.consistsOf->selectByKind(StoragePoint) -> map storage2() ;
+	consistsOf := consistsOf->union(  self.consistsOf->selectByKind(Step) -> map step2()->asOrderedSet()) ;
+	var specialAddedList:OrderedSet(ManufacturingSystemElement);
+	self.consistsOf->selectByKind(CompositeStep)->forEach(com){		
+		consistsOf :=  consistsOf->union(com.contains.consistsOf->selectByKind(StoragePoint)-> 
+		select(s:StoragePoint|com.contains._end->forAll(m:StoragePoint|s<>m)) -> map storage2()->asOrderedSet()) ;
+		consistsOf := consistsOf->union(  com->oclAsType(CompositeStep).contains.consistsOf->selectByKind(Step) -> map step2()->asOrderedSet()) ;	
+		// resolve links before we creating a new link
+		
+		
+		var newEndZ:TransportStep := new OUT::TransportStep(); // adding Z
+		newEndZ.transition := com.transition.resolve(ManufacturingSystemElement);
+		newEndZ.name := "EndCompost" + com.name;		
+		newEndZ.input := com.input;
+		newEndZ.output := com.output;
+		consistsOf :=  consistsOf->union(newEndZ->asOrderedSet());	
+		specialAddedList+=newEndZ;	 
+		// create End Point
+		var comEndPoint:OrderedSet(ManufacturingSystemElement) := com.contains.consistsOf->selectByKind(StoragePoint)-> 
+		select(s:StoragePoint|com.contains._end->forAll(m:StoragePoint|s<>m)=false) -> map endStorage2(com, newEndZ)->asOrderedSet();
+		specialAddedList+=comEndPoint;
+		// added to consist
+		consistsOf :=  consistsOf->union(comEndPoint) ;		
+	};
+	
+	start := self.start.resolve(StoragePoint);
+	_end := self._end.resolve(StoragePoint);
+	staff := self.staff;
+	transforms := self.transforms;
+	_uses := self._uses;
+	responsible := self.responsible;	
+	var test:String;
+	consistsOf-> select(m:ManufacturingSystemElement|specialAddedList->forAll(m.name<>name))->forEach(coms){				
+		coms.transition := coms.transition.resolve(ManufacturingSystemElement);
+	test := coms.name;
+	};
+	
+}
+
+
+mapping StoragePoint::endStorage2(com:CompositeStep, ends:TransportStep):StoragePoint{
+	name := self.name;
+	stores := self.stores;
+	transition := ends.oclAsType(ManufacturingSystemElement)->asOrderedSet();
+	var test:String;
+	transition->forEach(tran){
+	test := tran.name};
+	responsible := self.responsible;
+}
+
+mapping StoragePoint::storage2():StoragePoint{
+	name := self.name;
+	stores := self.stores;
+	transition := self.transition->fixTransactions();
+	responsible := self.responsible;	
+}
+
+mapping Step::step2():Step when {not self.oclIsKindOf(CompositeStep)}{
+init{
+	if (self.oclIsKindOf(QualityAssuranceStep))
+		result := new QualityAssuranceStep();
+	if (self.oclIsKindOf(TransportStep))
+		result := new TransportStep();
+	if (self.oclIsKindOf(ManufacturingStep))
+		result := new ManufacturingStep();
+}
+	name := self.name;
+	responsible := self.responsible;		
+	transition := self.transition->asOrderedSet()->fixTransactions();
+	speed := self.oclAsType(Step).speed;
+	input := self.oclAsType(Step).input;
+	output := self.oclAsType(Step).output;
+}
+
+query OrderedSet(ManufacturingSystemElement)::fixTransactions():Sequence(ManufacturingSystemElement){
+	var fixedMfe:Sequence(ManufacturingSystemElement);
+	fixedMfe := self->collect(m:ManufacturingSystemElement|
+	if (m.oclIsKindOf(CompositeStep)) then
+		m.oclAsType(CompositeStep).contains.start->first() // output decision ..> fix though
+	else
+	m
+	endif);
+	return fixedMfe;
+}
+

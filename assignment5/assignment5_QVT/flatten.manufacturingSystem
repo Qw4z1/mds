@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<com.chalmers:ManufacturingSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.chalmers="com.chalmers.manufacturingSystem" xsi:schemaLocation="com.chalmers.manufacturingSystem manufacturingSystem.ecore" start="//@consistsOf.4" end="//@consistsOf.13" name="FurnitureSystem" responsible="//@staff.3">
+<com.chalmers:ManufacturingSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.chalmers="com.chalmers.manufacturingSystem" xsi:schemaLocation="com.chalmers.manufacturingSystem ../assignment5_example/model/manufacturingSystem.ecore" start="//@consistsOf.4" end="//@consistsOf.13" name="FurnitureSystem" responsible="//@staff.3">
   <consistsOf xsi:type="com.chalmers:TransportStep" transition="//@consistsOf.10" name="CutTransport" responsible="//@staff.4">
     <input xsi:type="com.chalmers:BinaryCondition" left="//@consistsOf.0/@input.1" right="//@consistsOf.0/@input.2" type="or"/>
     <input xsi:type="com.chalmers:WorkPieceCondition" name="cutMetal_trans" requiresType="//@uses.4"/>

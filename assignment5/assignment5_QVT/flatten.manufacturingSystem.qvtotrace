@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http:///www.eclipse.org/m2m/qvt/operational/trace.ecore">
+  <traceRecords>
+    <mappingOperation name="MFS2FLAT" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//MFS2FLAT"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="ManufacturingSystem">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#/"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="ManufacturingSystem">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#/"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="storage2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//storage2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="StoragePoint">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="StoragePoint">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.4"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="storage2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//storage2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="StoragePoint">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.5"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="StoragePoint">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.13"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.2"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.7"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.8"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="storage2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//storage2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="StoragePoint">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="StoragePoint">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.5"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="storage2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//storage2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="StoragePoint">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="StoragePoint">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.12"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.11"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.6"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.3"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.2"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.6"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.5"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.10"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="step2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//step2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Step">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Step">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.0"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="endStorage2" package="flatten" module="flatten">
+      <runtimeMappingOperation href="qvto:/module.env#//endStorage2"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="StoragePoint">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2/@contains/@consistsOf.7"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="com" type="CompositeStep">
+        <value>
+          <modelElement href="../assignment5_example/model/example.xmi#//@consistsOf.2"/>
+        </value>
+      </parameters>
+      <parameters name="ends" type="TransportStep">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.1"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="StoragePoint">
+        <value>
+          <modelElement href="flatten.manufacturingSystem#//@consistsOf.9"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+</trace:Trace>
