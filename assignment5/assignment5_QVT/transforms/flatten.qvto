@@ -78,20 +78,22 @@ init{
 }
 	name := self.name;
 	responsible := self.responsible;		
-	transition := self.transition->asOrderedSet()->fixTransactions();
+	transition := self.transition->asOrderedSet()->fixTransactions(self);
 	speed := self.oclAsType(Step).speed;
 	input := self.oclAsType(Step).input;
 	output := self.oclAsType(Step).output;
 }
 
-query OrderedSet(ManufacturingSystemElement)::fixTransactions():Sequence(ManufacturingSystemElement){
+query OrderedSet(ManufacturingSystemElement)::fixTransactions(str:ManufacturingSystemElement):Sequence(ManufacturingSystemElement){
 	var fixedMfe:Sequence(ManufacturingSystemElement);
 	fixedMfe := self->collect(m:ManufacturingSystemElement|
 	if (m.oclIsKindOf(CompositeStep)) then
-		m.oclAsType(CompositeStep).contains.start->first() // output decision ..> fix though
+		
+		m.oclAsType(CompositeStep).contains.start->asOrderedSet() // output decision ..> fix though
+		
 	else
-	m
-	endif);
+	m->asOrderedSet()
+	endif)->flatten();
 	return fixedMfe;
 }
 
