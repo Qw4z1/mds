@@ -63,7 +63,7 @@ mapping StoragePoint::endStorage2(com:CompositeStep, ends:TransportStep):Storage
 mapping StoragePoint::storage2():StoragePoint{
 	name := self.name;
 	stores := self.stores;
-	transition := self.transition->fixTransactions();
+	transition := self.transition->fixTransactions(self);
 	responsible := self.responsible;	
 }
 
@@ -84,16 +84,22 @@ init{
 	output := self.oclAsType(Step).output;
 }
 
-query OrderedSet(ManufacturingSystemElement)::fixTransactions(str:ManufacturingSystemElement):Sequence(ManufacturingSystemElement){
+query OrderedSet(ManufacturingSystemElement)::fixTransactions(stepOut:ManufacturingSystemElement):Sequence(ManufacturingSystemElement){
 	var fixedMfe:Sequence(ManufacturingSystemElement);
-	fixedMfe := self->collect(m:ManufacturingSystemElement|
-	if (m.oclIsKindOf(CompositeStep)) then
-		
-		m.oclAsType(CompositeStep).contains.start->asOrderedSet() // output decision ..> fix though
-		
-	else
-	m->asOrderedSet()
-	endif)->flatten();
+	self -> forEach(stepTran){
+		if (stepTran.oclIsKindOf(CompositeStep)){
+			stepOut.oclAsType(Step).output-> forEach(outputD){
+			stepTran.oclAsType(CompositeStep).contains.start->forEach(startI){
+				if (startI.stores->includes(outputD.outputTypes)){
+					fixedMfe+=startI;
+				}
+			}			
+		}
+		} else {
+			fixedMfe+=stepTran;
+		}
+	};
+	
 	return fixedMfe;
 }
 
