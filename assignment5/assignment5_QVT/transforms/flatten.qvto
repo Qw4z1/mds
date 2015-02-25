@@ -23,7 +23,7 @@ mapping ManufacturingSystem::MFS2FLAT(): ManufacturingSystem{
 		var newEndZ:TransportStep := new OUT::TransportStep(); // adding Z
 		newEndZ.transition := com.transition.resolve(ManufacturingSystemElement);
 		newEndZ.name := "EndCompost" + com.name;		
-		newEndZ.input := com.input;
+		//newEndZ.input := com.input;
 		newEndZ.output := com.output;
 		consistsOf :=  consistsOf->union(newEndZ->asOrderedSet());	
 		specialAddedList+=newEndZ;	 
