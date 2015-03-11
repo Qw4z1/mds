@@ -485,7 +485,7 @@
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_lxGnIauZEeSmGcY675mV7w" fontName="Lucida Grande"/>
     <element xmi:type="ecore:EReference" href="manufacturingSystem.ecore#//ManufacturingSystem/responsible"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lxGnIquZEeSmGcY675mV7w" points="[0, 9, -109, -26]$[0, 35, -109, 0]$[68, 35, -41, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lxGnIquZEeSmGcY675mV7w" points="[5, 9, -118, -203]$[112, 194, -11, -18]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lxLfoKuZEeSmGcY675mV7w" id="(0.8245614035087719,0.7906976744186046)"/>
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_rL1xgKuZEeSmGcY675mV7w" type="4002" source="_fE9wsKfzEeSjXt66Kr8wqw" target="_x2Z5iqcOEeSOlYNOGELBqw">

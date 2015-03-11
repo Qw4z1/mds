@@ -1,5 +1,132 @@
 <?xml version="1.0" encoding="ASCII"?>
-<se.chalmers.arvidk.mse.ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:se.chalmers.arvidk.mse.ims="http://se/chalmers/arvidk/mse/ims">
-  <steps/>
-  <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"/>
+<se.chalmers.arvidk.mse.ims:IMS
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:se.chalmers.arvidk.mse.ims="http://se/chalmers/arvidk/mse/ims"
+    xsi:schemaLocation="http://se/chalmers/arvidk/mse/ims assigment2.ecore">
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"
+      speed="3.0"
+      overseenBy="//@persons.1"
+      id="WoodSmoothening"
+      next="//@steps.2">
+    <input name="WoodInputCondition"
+        requires="//@workPieces.1"/>
+    <output
+        outputWorkpiece="//@workPieces.3"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="WoodTransport"
+      next="//@steps.0">
+    <input name="WoodInputCondition"
+        requires="//@workPieces.1"/>
+    <output
+        outputWorkpiece="//@workPieces.1"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="SmoothWoodTransport"
+      next="//@steps.10">
+    <input name="SmoothWoodInput"
+        requires="//@workPieces.3"/>
+    <output
+        outputWorkpiece="//@workPieces.3"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"
+      speed="3.0"
+      overseenBy="//@persons.0"
+      id="MetalPolishing"
+      next="//@steps.6">
+    <input name="MetalInputCondition"
+        requires="//@workPieces.0"/>
+    <output
+        outputWorkpiece="//@workPieces.2"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Manufacturing"
+      speed="5.0"
+      id="FinalAssembly"
+      next="//@steps.9">
+    <input xsi:type="se.chalmers.arvidk.mse.ims:BooleanInputCondition"
+        name="EndProductInputCondition"
+        BooleanOperator="AND"
+        left="//@steps.4/@input.1"
+        right="//@steps.4/@input.2"/>
+    <input name="SmoothWoodCondition"
+        requires="//@workPieces.3"/>
+    <input name="ShinyMetalCondition"
+        requires="//@workPieces.2"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="MetalTransport"
+      next="//@steps.3">
+    <input requires="//@workPieces.0"/>
+    <output
+        outputWorkpiece="//@workPieces.0"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="ShinyMetalTransport"/>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="EndProductTransport"
+      next="//@steps.8">
+    <input name="EndProductCondition"/>
+    <output
+        outputWorkpiece="//@workPieces.4"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:QualityAssurance"
+      overseenBy="//@persons.2"
+      id="EndProductQA"
+      next="//@steps.9">
+    <input name="EndProductCondition"
+        requires="//@workPieces.4"/>
+    <output
+        outputWorkpiece="//@workPieces.4"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="QAdEndProductTransport"
+      storageTransition="//@storages.2"/>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:CompositeManufacturing"
+      overseenBy="//@persons.2"
+      id="EndProductAssembly"
+      next="//@steps.9 //@steps.4">
+    <input xsi:type="se.chalmers.arvidk.mse.ims:BooleanInputCondition"
+        name="EndProductAssemblyCondition"
+        BooleanOperator="AND"
+        left="//@steps.4/@input.1"
+        right="//@steps.4/@input.2"/>
+    <output
+        outputWorkpiece="//@workPieces.4"/>
+  </steps>
+  <steps xsi:type="se.chalmers.arvidk.mse.ims:Transport"
+      id="CompositeTransport"
+      next="//@steps.4"/>
+  <workPieces
+      id="metal"/>
+  <workPieces
+      id="wood"/>
+  <workPieces
+      id="shinyMetal"/>
+  <workPieces
+      id="smoothWood"/>
+  <workPieces
+      id="EndProduct"/>
+  <persons name="Mat"
+      isResponsible="//@steps.3"/>
+  <persons name="Lisa"
+      isResponsible="//@steps.0"/>
+  <persons name="Ken"
+      role=""/>
+  <storages
+      capacity="2.0"
+      isStart="true"
+      has="//@workPieces.1"
+      id="WoodStorage"
+      transition="//@steps.1"/>
+  <storages
+      isStart="true"
+      has="//@workPieces.0"
+      id="MetalStorage"
+      transition="//@steps.5"/>
+  <storages
+      isEnd="true"
+      has="//@workPieces.4"
+      id="EndProductStorage"/>
 </se.chalmers.arvidk.mse.ims:IMS>

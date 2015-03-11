@@ -5,4 +5,5 @@
   <models xmi:type="ecore:EPackage" href="model/assigment2.ecore#/"/>
   <models xmi:type="notation:Diagram" href="model/assigment2.ecore_diagram#_FWLTIKq4EeSdIPTqp5kPFg"/>
   <models xmi:type="se.chalmers.arvidk.mse.ims:IMS" href="model/IMS.xmi#/"/>
+  <models xmi:type="se.chalmers.arvidk.mse.ims:IMS" href="model/IMS.xmi#/"/>
 </viewpoint:DAnalysis>

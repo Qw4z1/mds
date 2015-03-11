@@ -7,17 +7,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="isResponsible" upperBound="-1"
         eType="#//Step"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanCondition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="work" eType="#//WorkPiece"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkPiece">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="isStored" upperBound="-1"
-        eType="#//Storage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="finalize" upperBound="-1"
-        eType="#//BooleanCondition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -25,12 +16,12 @@
         eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//Step"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contains" upperBound="-1"
-        eType="#//Step" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputCondition" eType="#//BooleanCondition"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="work" upperBound="-1" eType="#//WorkPiece"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" upperBound="-1"
+        eType="#//InputCondition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        upperBound="-1" eType="#//Output" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storageTransition" upperBound="-1"
+        eType="#//Storage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Manufacturing" eSuperTypes="#//Step"/>
   <eClassifiers xsi:type="ecore:EClass" name="QualityAssurance" eSuperTypes="#//Step"/>
@@ -55,12 +46,24 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEnd" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="has" upperBound="-1" eType="#//WorkPiece"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BinaryOperator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//BoleanOperatorType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
+        eType="#//Step"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BoleanOperatorType">
     <eLiterals name="OR"/>
     <eLiterals name="AND"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputCondition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" eType="#//WorkPiece"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Output">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputWorkpiece" eType="#//WorkPiece"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanInputCondition" eSuperTypes="#//InputCondition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BooleanOperator" eType="#//BoleanOperatorType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1" eType="#//InputCondition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" lowerBound="1" eType="#//InputCondition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositeManufacturing" eSuperTypes="#//Step"/>
 </ecore:EPackage>
